@@ -23,20 +23,16 @@ public:
     typename list<Cache<S>>::iterator iter;
 
     void sort(typename list<Cache<S>>::iterator itr) {
-        Cache<S> buffer;
+        //Cache<S> buffer;
         auto iter_bigger = itr;
         while (itr != array.begin()) {
             iter_bigger--;
             if (itr->priority > iter_bigger->priority) {
-                buffer = *itr;
-                itr->data = iter_bigger->data;
-                itr->priority = iter_bigger->priority;
-                iter_bigger->data = buffer.data;
-                iter_bigger->priority = buffer.priority;
+                swap(*iter_bigger, *itr);
             }
             else {
                 break;
-            }
+            } 
             itr--;
         }
     }
